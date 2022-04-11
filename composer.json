@@ -1,0 +1,20 @@
+{
+  "name": "iu-webtech/wcms-site-update-tool-gui",
+  "description": "The GUI for wcms generic tool to operation assets in WCMS",
+  "license": "GPL-3.0-only",
+  "authors": [
+    {
+      "name": "Qiwen Zhu",
+      "email": "qiwzhu@iu.edu"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "phpunit/phpunit": "^7.5",
+  },
+  "autoload": {
+    "psr-4": {
+      "Edu\\IU\\Framework\\GenericUpdaterGUI\\": "src"
+    }
+  }
+}
