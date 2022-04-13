@@ -42,7 +42,9 @@ class Controller{
             $this->$nextStep();
         }catch (\Error $e){
             $errorMessage = $e->getMessage();
-            echo $this->view->render('@basic/error.twig', compact('errorMessage'));
+            $appOrg = $this->appOrg;
+            $appName = $this->appName;
+            echo $this->view->render('@basic/error.twig', compact('errorMessage', 'appOrg', 'appName'));
         }
     }
 
