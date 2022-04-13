@@ -41,7 +41,8 @@ class Controller{
         try {
             $this->$nextStep();
         }catch (\Error $e){
-            echo $this->view->render('@basic/error.twig', $e->getMessage());
+            $errorMessage = $e->getMessage();
+            echo $this->view->render('@basic/error.twig', compact('errorMessage'));
         }
     }
 
