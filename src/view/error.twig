@@ -1,0 +1,8 @@
+{% extends '@basic/layout.twig' %}
+
+{% block content %}
+    <div class="rvt-alert rvt-alert--danger [ rvt-m-top-md ]" role="alert" aria-labelledby="error-alert-title" data-rvt-alert="error">
+        <div class="rvt-alert__title" id="error-alert-title">Oops!</div>
+        <p class="rvt-alert__message">{{ errorMessage }}</p>
+    </div>
+{% endblock %}
