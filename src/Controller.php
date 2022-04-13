@@ -14,6 +14,7 @@ class Controller{
     protected $appName;
     protected $appOrg;
     protected $welcomeMessage;
+    protected $appInfo;
 
     public function __construct()
     {
@@ -66,6 +67,8 @@ class Controller{
         $this->appOrg = $appOrg;
         $this->appName = $appName;
         $this->welcomeMessage = $welcomeMessage;
+        $this->appInfo = compact('appOrg', 'appName');
+
     }
 
 
