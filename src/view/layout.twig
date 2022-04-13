@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://assets.iu.edu/favicon.ico" rel="shortcut icon" type="image/x-icon">
+        <meta content="CodePen" name="apple-mobile-web-app-title">
+        <title>IU Framework update tool</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link href="https://unpkg.com/rivet-core@2.0.0-alpha.7/css/rivet.min.css" rel="stylesheet">
+        <link href="https://v2.rivet.iu.edu/css/rivet-v2-rfc-site.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <header class="rvt-header-wrapper">
+        <!-- Hidden link for screen reader users to skip to main content -->
+            <a class="rvt-header-wrapper__skip-link" href="#main-content">Skip to main content</a>
+            <div class="rvt-header-global">
+                <div class="rvt-container-xl">
+                    <div class="rvt-header-global__inner">
+                        <div class="rvt-header-global__logo-slot">
+                            <a class="rvt-lockup" href="/">
+                                <!-- Trident logo -->
+                                <div class="rvt-lockup__tab">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="rvt-lockup__trident" viewBox="0 0 28 34">
+                                        <path d="M-3.34344e-05 4.70897H8.83308V7.174H7.1897V21.1426H10.6134V2.72321H8.83308V0.121224H18.214V2.65476H16.2283V21.1426H19.7889V7.174H18.214V4.64047H27.0471V7.174H25.0614V23.6761L21.7746 26.8944H16.2967V30.455H18.214V33.8787H8.76463V30.592H10.6819V26.8259H5.20403L1.91726 23.6077V7.174H-3.34344e-05V4.70897Z" fill="currentColor"></path>
+                                    </svg>
+                                </div>
+                                <!-- Website or application title -->
+                                <div class="rvt-lockup__body">
+                                    <span class="rvt-lockup__title">{{ appOrg }}</span>
+                                    <span class="rvt-lockup__subtitle">Indiana University</span>
+                                </div>
+                            </a>
+                        </div>
+{#                        <div class="rvt-header-global__controls" data-rvt-disclosure="menu">#}
+{#                            <button aria-expanded="false" class="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up" data-rvt-disclosure-toggle="menu">#}
+{#                                <span class="rvt-sr-only">Menu</span>#}
+{#                                <svg xmlns="http://www.w3.org/2000/svg" class="rvt-global-toggle__open" viewBox="0 0 16 16" focusable="false">#}
+{#                                    <g fill="currentColor">#}
+{#                                        <path d="M15,3H1A1,1,0,0,1,1,1H15a1,1,0,0,1,0,2Z"></path>#}
+{#                                        <path d="M15,9H1A1,1,0,0,1,1,7H15a1,1,0,0,1,0,2Z"></path>#}
+{#                                        <path d="M15,15H1a1,1,0,0,1,0-2H15a1,1,0,0,1,0,2Z"></path>#}
+{#                                    </g>#}
+{#                                </svg>#}
+{#                                <svg xmlns="http://www.w3.org/2000/svg" class="rvt-global-toggle__close" fill="currentColor" viewBox="0 0 16 16">#}
+{#                                    <path d="M8.46954 7.00409L13.7595 1.71409C13.9234 1.52279 14.009 1.27671 13.9993 1.02504C13.9895 0.773362 13.8852 0.534623 13.7071 0.356528C13.529 0.178434 13.2903 0.0741014 13.0386 0.0643803C12.7869 0.0546591 12.5408 0.140265 12.3495 0.304092L7.05954 5.59409L1.76954 0.294092C1.58124 0.105788 1.32585 -3.72428e-09 1.05954 -1.74018e-09C0.793242 2.43924e-10 0.537847 0.105788 0.349544 0.294092C0.16124 0.482395 0.055452 0.73779 0.055452 1.00409C0.055452 1.27039 0.16124 1.52579 0.349544 1.71409L5.64954 7.00409L0.349544 12.2941C0.244862 12.3837 0.159841 12.4941 0.0998179 12.6181C0.0397946 12.7422 0.00606467 12.8773 0.000745174 13.015C-0.00457432 13.1528 0.0186315 13.2901 0.0689061 13.4184C0.119181 13.5467 0.195439 13.6633 0.292893 13.7607C0.390348 13.8582 0.506896 13.9345 0.635221 13.9847C0.763546 14.035 0.900878 14.0582 1.0386 14.0529C1.17632 14.0476 1.31145 14.0138 1.43551 13.9538C1.55958 13.8938 1.6699 13.8088 1.75954 13.7041L7.05954 8.41409L12.3495 13.7041C12.5408 13.8679 12.7869 13.9535 13.0386 13.9438C13.2903 13.9341 13.529 13.8297 13.7071 13.6517C13.8852 13.4736 13.9895 13.2348 13.9993 12.9831C14.009 12.7315 13.9234 12.4854 13.7595 12.2941L8.46954 7.00409Z" fill="currentColor"></path>#}
+{#                                </svg>#}
+{#                            </button>#}
+
+{#                            <!-- ******************************************************#}
+{#                                Primary navigation#}
+{#                            ******************************************************* -->#}
+
+{#                            <nav aria-label="Main" class="rvt-header-menu" data-rvt-disclosure-target="menu" hidden="">#}
+{#                                <ul class="rvt-header-menu__list">#}
+{#                                    <li class="rvt-header-menu__item">#}
+{#                                        <a class="rvt-header-menu__link" href="#0">Nav Item One</a>#}
+{#                                    </li>#}
+{#                                    <li class="rvt-header-menu__item">#}
+{#                                        <a class="rvt-header-menu__link" href="#0">Nav Item Two</a>#}
+{#                                    </li>#}
+{#                                    <li class="rvt-header-menu__item rvt-header-menu__item--current">#}
+{#                                        <div class="rvt-header-menu__dropdown rvt-dropdown" data-rvt-dropdown="primary-nav-3">#}
+{#                                            <div class="rvt-header-menu__group">#}
+{#                                                <a class="rvt-header-menu__link" href="#0" aria-current="page">Nav Item Three</a>#}
+{#                                                <button aria-expanded="false" class="rvt-dropdown__toggle rvt-header-menu__toggle" data-rvt-dropdown-toggle="primary-nav-3">#}
+{#                                                    <span class="rvt-sr-only">Toggle Sub-navigation</span>#}
+{#                                                    <svg xmlns="http://www.w3.org/2000/svg" class="rvt-global-toggle__open" height="16" viewBox="0 0 16 16" width="16" focusable="false">#}
+{#                                                        <path d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z" fill="currentColor"></path>#}
+{#                                                    </svg>#}
+{#                                                </button>#}
+{#                                            </div>#}
+{#                                            <div class="rvt-header-menu__submenu rvt-dropdown__menu rvt-dropdown__menu--right" data-rvt-dropdown-menu="primary-nav-3" hidden="">#}
+{#                                                <ul class="rvt-header-menu__submenu-list">#}
+{#                                                    <li class="rvt-header-menu__submenu-item">#}
+{#                                                        <a class="rvt-header-menu__submenu-link" href="#0">Sub One</a>#}
+{#                                                    </li>#}
+{#                                                    <li class="rvt-header-menu__submenu-item">#}
+{#                                                        <a class="rvt-header-menu__submenu-link" href="#0">Sub Three</a>#}
+{#                                                    </li>#}
+{#                                                    <li class="rvt-header-menu__submenu-item">#}
+{#                                                        <a class="rvt-header-menu__submenu-link" href="#0">Sub Three</a>#}
+{#                                                    </li>#}
+{#                                                </ul>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </li>#}
+{#                                    <li class="rvt-header-menu__item">#}
+{#                                        <a class="rvt-header-menu__link" href="#0">Nav Item Four</a>#}
+{#                                    </li>#}
+{#                                </ul>#}
+
+{#                                <!-- **************************************************#}
+{#                                    Avatar and "log out" link#}
+{#                                *************************************************** -->#}
+
+{#                                <div class="rvt-flex rvt-items-center rvt-m-left-md rvt-p-bottom-md rvt-p-bottom-none-md-up">#}
+{#                                    <div class="rvt-avatar rvt-avatar--xs">#}
+{#                                        <span class="rvt-avatar__text">UN</span>#}
+{#                                    </div>#}
+{#                                    <div class="rvt-ts-14 rvt-m-left-xs rvt-p-right-xs rvt-m-right-xs rvt-border-right">username</div>#}
+{#                                    <a href="#0" class="rvt-ts-14">Log out</a>#}
+{#                                </div>#}
+{#                            </nav>#}
+{#                        </div>#}
+                        {% block globalnav%}
+                        {% endblock %}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="rvt-header-local">
+                <div class="rvt-container-xl">
+                    <div class="rvt-header-local__inner" data-rvt-disclosure="local-header-menu">
+                        <!-- Secondary navigation title -->
+                        <a href="./index.php" class="rvt-header-local__title">{{ appName }}</a>
+                        <!-- Menu button that shows/hides secondary navigation on smaller screens -->
+                        <button aria-expanded="false" class="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up" data-rvt-disclosure-toggle="local-header-menu">
+                            <span class="rvt-sr-only">Toggle local menu</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <path fill="currentColor" d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+    </header>
+        <main class="rvt-layout__wrapper">
+        <div class="rvt-bg-black-000 rvt-p-tb-sm">
+            <div class="rvt-container-lg">
+                <div class="rvt-card rvt-card--raised [ rvt-p-all-lg rvt-p-all-xxl-md-up ]">
+                    <div class="rvt-prose rvt-flow">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+        <script src="https://unpkg.com/rivet-core@2.0.0-alpha.7/js/rivet.min.js"></script>
+        <script id="rendered-js">
+            Rivet.init();
+        </script>
+        {% block scripts %}
+            <script>
+                function SubmitAndDisable(e) {
+                    e.preventDefault();
+                    const currentButton = e.target;
+                    const form = document.getElementById("ctr_form");
+                    const buttons = document.getElementsByTagName("button");
+                    // no need to validate in 2 step
+                    if(form != null && validate(form))
+                    {
+                        form.submit();
+                        Array.from(form.elements).forEach(
+                            formElement => formElement.disabled = true
+                        );
+
+                        setCurrentButton(currentButton)
+
+                        Array.from(buttons).forEach(
+                            button => button.disabled = true
+                        );
+                    }
+
+                    return false;
+                }
+
+                function setCurrentButton(crrntBtn){
+                    const currentButtonCss = crrntBtn.getAttribute('class');
+                    const newButtonCss = currentButtonCss + ' rvt-button--loading';
+                    crrntBtn.setAttribute('class', newButtonCss);
+                    let newInnerHTML = '<span class="rvt-button__content">Update settings</span>';
+                    newInnerHTML += '<div class="rvt-loader rvt-loader--xs" aria-label="Content loading"></div>';
+                    crrntBtn.innerHTML = newInnerHTML;
+                }
+
+                function Disable(e){
+                    e.preventDefault();
+                    console.log(e.target);
+                    const currentButton = e.target;
+                    const buttons = document.getElementsByTagName("button");
+                    currentButton.form.submit();
+                    setCurrentButton(currentButton);
+
+                    for(let i = 0; i < buttons.length; i++){
+                        buttons[i].disabled = true;
+                    }
+                }
+
+                function validate(f){
+                    const textInputs = f.getElementsByTagName("input");
+                    const funcPrefix = "validate_";
+                    let result = true;
+                    for(let i = 0; i < textInputs.length; i++){
+                        let input = textInputs[i];
+                        let name = input.name;
+                        let func = funcPrefix + name;
+                        if(name != "todo"){
+                            let fieldResult = window[func](input);
+                            result = result && fieldResult;
+                        }
+
+                    }
+
+                    let isUpdateSelected = validate_update_to_apply(f);
+                    result = result && isUpdateSelected;
+
+                    return result;
+                }
+
+                function validate_update_to_apply(f){
+                    const dropdown = f.getElementsByTagName('select')[0];
+                    const inlineAlert = dropdown.nextElementSibling;
+                    let hasContent = (dropdown.value.trim() != "");
+                    dropdown.style = hasContent ? "" : "background-color: #ffece5;";
+                    inlineAlert.style = hasContent ? "display: none;" : "display: flex;"
+
+                    return hasContent;
+                }
+
+                function validate_site_name(input){
+                    const hasContent = isInputEmpty(input);
+
+                    return hasContent;
+                }
+
+                function validate_api_key(input){
+                    const hasContent = isInputEmpty(input)
+                    const correctFormat = true;
+
+                    return hasContent && correctFormat;
+                }
+
+                function isInputEmpty(input){
+                    const label = input.previousElementSibling;
+                    const inlineAlert = input.nextElementSibling;
+                    const val = input.value.trim();
+                    const hasContent = val == "" ? false : true;
+                    input.style = hasContent ? "" : "background-color: #ffece5;";
+                    inlineAlert.style = hasContent ? "display: none;" : "display: flex;"
+
+                    return hasContent;
+                }
+
+                function dismissAlert(e){
+                    const inlineAlert = e.target.nextElementSibling;
+                    inlineAlert.style = "display: none;";
+                    e.target.style = "background-color: none;";
+                }
+
+                // image light box
+                window.addEventListener('load', function(){
+                    const imageSelector = "div.with-light-box>img";
+                    const images = document.querySelectorAll(imageSelector);
+                    const body = document.body;
+                    for(let i = 0; i < images.length; i++){
+                        let image = images.item(i);
+                        let lightboxId = image.dataset.lightBox;
+                        let imagePath = image.src;
+                        let lightBox = document.createElement('div');
+                        lightBox.className = 'lightbox-target';
+                        lightBox.id = lightboxId;
+                        lightBox.innerHTML = '<img src="' + imagePath + '"/><a class="lightbox-close" href="#"></a>';
+                        body.append(lightBox);
+                        console.log(lightboxId);
+                        console.log(imagePath);
+                        image.addEventListener('click', function() {
+                            document.location.href = "#" + lightboxId;
+                        });
+                        document.getElementById(lightboxId).addEventListener('click', function(e) {
+                            document.location.href = "#";
+                        });
+                    }
+                });
+
+            </script>
+        {% endblock %}
+    </body>
+</html>
