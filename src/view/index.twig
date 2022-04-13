@@ -46,13 +46,12 @@
         <div class="rvt-row">
             <div class="rvt-cols-12-md rvt-m-top-md">
                 <label class="rvt-label" for="update_to_apply">Please select what you would like to do *</label>
-{#                <select class="rvt-select" id="update_to_apply" name="update_to_apply" onchange="dismissAlert(event)">#}
-{#                    <option value="" selected>-</option>#}
-{#                    <option value="2022-april-rivet-style">2022 May: Rivet Visual Alignment Update</option>#}
-{#                </select>#}
+                <select class="rvt-select" id="update_to_apply" name="update_to_apply" onchange="dismissAlert(event)">
+                    <option value="" selected>-</option>
+                    {% block selectOptions %}
+                    {% endblock %}
+                </select>
 
-                {% block selects %}
-                {% endblock %}
                 <div class="rvt-inline-alert rvt-inline-alert--standalone rvt-inline-alert--danger" style="display: none">
               <span class="rvt-inline-alert__icon">
                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
