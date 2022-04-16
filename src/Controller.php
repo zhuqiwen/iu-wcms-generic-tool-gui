@@ -18,6 +18,7 @@ class Controller{
 
     public function __construct()
     {
+        session_start();
         // viewLoader can be used by childs to set different path and namespace of tempaltes
         // viewLoader->addPath()
         $this->viewLoader = New FilesystemLoader();
