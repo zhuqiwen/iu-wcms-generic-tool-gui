@@ -31,6 +31,7 @@ class Controller{
         $nextStep = $nextStep . str_replace(" ", "", ucwords(str_replace("-", " ", $updateToApply)));
 
         $this->view = new Html($this->viewLoader, ['debug' => true]);
+        $this->view->addGlobal('session', $_SESSION);
         $this->view->addExtension(new DebugExtension());
 
         if ($nextStep != "index")
