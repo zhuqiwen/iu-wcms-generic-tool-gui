@@ -25,15 +25,35 @@ class Controller{
         $this->viewLoader->setPaths(__DIR__ . '/view', 'basic');
     }
 
-    public function start()
+    public function start(string $routeMode = 'singleRoute')
+    {
+        $this->initView();
+
+
+        try {
+            $this->$routeMode();
+        }catch (\Exception $e){
+            $errorMessage = $e->getMessage();
+            $appOrg = $this->appOrg;
+            $appName = $this->appName;
+            echo $this->view->render('@basic/error.twig', compact('errorMessage', 'appOrg', 'appName'));
+        }
+    }
+
+    //Route modes
+
+    /**
+     * singleRoute should be used for apps like framework updater, or campaign template installer
+     * where all forms submitted only to the index.php
+     * So there is only one route, /index.php, without any query string
+     *
+     * other route mode should be defined in client codebase
+     */
+    protected function singleRoute()
     {
         $nextStep = filter_input(INPUT_POST, "next_step") ?? "index";
         $updateToApply = filter_input(INPUT_POST, "update_to_apply") ?? "";
         $nextStep = $nextStep . str_replace(" ", "", ucwords(str_replace("-", " ", $updateToApply)));
-
-        $this->view = new Html($this->viewLoader, ['debug' => true]);
-        $this->view->addGlobal('session', $_SESSION);
-        $this->view->addExtension(new DebugExtension());
 
         if ($nextStep != "index")
         {
@@ -50,6 +70,21 @@ class Controller{
             echo $this->view->render('@basic/error.twig', compact('errorMessage', 'appOrg', 'appName'));
         }
     }
+
+
+    protected function initView()
+    {
+        $this->view = new Html($this->viewLoader, ['debug' => true]);
+        $this->view->addGlobal('session', $_SESSION);
+        $this->addViewGlobals();
+        $this->view->addExtension(new DebugExtension());
+        $this->addViewExtensions();
+    }
+
+    //Placeholders for view->addGlobal() and view->addExtension()
+    protected function addViewGlobals(){}
+
+    protected function addViewExtensions(){}
 
     protected function init()
     {
