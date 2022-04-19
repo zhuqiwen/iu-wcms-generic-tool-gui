@@ -10,7 +10,7 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "phpunit/phpunit": "^7.5",
+    "phpunit/phpunit": "^9.5.18",
     "twig/twig": "^3.0"
   },
   "autoload": {
