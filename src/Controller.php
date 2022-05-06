@@ -101,12 +101,20 @@ class Controller{
         $this->apiKey = $apiKey;
     }
 
-    protected function setAppInfo(string $appOrg, string $appName, string $welcomeMessage)
+    protected function setAppInfo(string $appOrg, string $appName, string $welcomeMessage, array $extra = [])
     {
         $this->appOrg = $appOrg;
         $this->appName = $appName;
         $this->welcomeMessage = $welcomeMessage;
-        $this->appInfo = compact('appOrg', 'appName');
+
+        foreach ($extra as $k => $v){
+            if($k == 'appOrg' || $k == 'appName' || $k == 'welcomeMessage'){
+                $msg = 'the key of ' . $k . ' is not allowed in \$extra passed into setAppInfo()';
+                throw new \RuntimeException($msg);
+            }
+        }
+
+        $this->appInfo = array_merge($extra, compact('appOrg', 'appName'));
 
     }
 
