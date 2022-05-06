@@ -114,7 +114,7 @@ class Controller{
             }
         }
 
-        $this->appInfo = array_merge($extra, compact('appOrg', 'appName'));
+        $this->appInfo = array_merge($extra, compact('appOrg', 'appName', 'welcomeMessage'));
 
     }
 
