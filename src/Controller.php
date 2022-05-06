@@ -118,6 +118,11 @@ class Controller{
 
     }
 
+    public function getAppInfo()
+    {
+        return $this->appInfo;
+    }
+
 
     //provide a default index with some instrucction
     protected function index()
