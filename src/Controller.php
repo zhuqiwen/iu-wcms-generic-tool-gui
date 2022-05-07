@@ -113,9 +113,16 @@ class Controller{
                 throw new \RuntimeException($msg);
             }
         }
+        $username = $this->getUsername();
+        $firstLetter = empty($username) ? '?' : strtoupper($username[0]);
 
-        $this->appInfo = array_merge($extra, compact('appOrg', 'appName', 'welcomeMessage'));
+        $this->appInfo = array_merge($extra, compact('appOrg', 'appName', 'welcomeMessage', 'username', 'firstLetter'));
 
+    }
+
+    public function getUsername()
+    {
+        return $_SESSION['CAS_USER'] ?? '';
     }
 
     public function getAppInfo()
