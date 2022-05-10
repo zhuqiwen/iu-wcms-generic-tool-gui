@@ -116,7 +116,16 @@ class Controller{
         $username = $this->getUsername();
         $firstLetter = empty($username) ? '?' : strtoupper($username[0]);
 
-        $this->appInfo = array_merge($extra, compact('appOrg', 'appName', 'welcomeMessage', 'username', 'firstLetter'));
+        $this->appInfo = array_merge(
+            $extra,
+            compact(
+                'appOrg',
+                'appName',
+                'welcomeMessage',
+                'username',
+                'firstLetter'
+            )
+        );
 
     }
 
